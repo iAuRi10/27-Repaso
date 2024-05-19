@@ -1,4 +1,4 @@
-# start by pulling the python image
+# start by pulling the python image 
 FROM python:3-slim
 
 # switch working directory

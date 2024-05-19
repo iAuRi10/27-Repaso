@@ -1,2 +1,2 @@
 # 27-Repaso
-Repaso para examen 27
+Repaso para examen 27.
