@@ -1,0 +1,31 @@
+name: 27-repaso.
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - src/**
+  pull_request:
+    branches: [ main ] 
+    paths:
+      - src/**
+
+jobs:
+
+  aws:
+    name: Deploy image to aws
+    runs-on: ubuntu-latest
+    needs: build
+    steps:  
+    - name: multiple command
+      uses: appleboy/ssh-action@master
+      with:
+        host: ${{ secrets.AWS_HOSTNAME }}
+        username: ${{ secrets.AWS_USERNAME }}
+        key: ${{ secrets.AWS_PRIVATEKEY }}
+        port: 22  # ${{ secrets.PORT }}
+        script: |
+            sleep 45
+            docker stop web && docker rm web
+            docker rmi aurii/repaso
+            docker run -d -p 80:8000 --name web aurii/repaso
