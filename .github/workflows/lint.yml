@@ -1,4 +1,4 @@
-name: 27-repaso.
+name: 27-lint
 
 on:
   push:
